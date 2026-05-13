@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS BalanceAuditLog (
     AccountID  INT NOT NULL,
     OldBalance DECIMAL(15,2),
     NewBalance DECIMAL(15,2),
-    ChangeType VARCHAR(20),   -- 'INCOME' hoặc 'EXPENSE'
-    ChangedAt  DATETIME DEFAULT CURRENT_TIMESTAMP
+    ChangeType VARCHAR(20),
+    ChangedAt  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (AccountID) REFERENCES BankAccounts(AccountID) ON DELETE CASCADE
 );
