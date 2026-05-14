@@ -17,6 +17,8 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Aiven SSL certificate
-ca.pem
-*.pem
+# Build artifacts - không cần thiết
+build/
+dist/
+__pycache__/
+*.pyc
