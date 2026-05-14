@@ -92,13 +92,16 @@ class ExpensesPage(BasePage):
         tk.Label(right, text = "Expense History", bg = C["bg_card"],
                  fg = C["text_pri"], font = FONT_HEAD).pack(anchor = "w", pady = (0, 10))
         
-        cols = ("Category", "Amount ($)", "Date", "Description")
-        widths = [110, 110, 90, 180]
+        cols = ("ID", "Category", "Amount ($)", "Date", "Description")
+        widths = [0, 110, 110, 90, 180]
         tf, tree = build_treeview(right, cols, widths, height=14)
         tf.pack(fill = "both", expand = True)
 
+        tree.column("ID", width=0, minwidth=0, stretch=False)
+        tree.heading("ID", text="")
+
         for r in get_expenses_by_user(self.get_uid()):
-            tree.insert("", tk.END, values = (r["CategoryName"], f"{float(r['Amount']):,.2f}", str(r["ExpenseDate"]), r["Description"]))
+            tree.insert("", tk.END, values = (r["ExpenseID"], r["CategoryName"], f"{float(r['Amount']):,.2f}", str(r["ExpenseDate"]), r["Description"]))
             
         def delete_selected():
             selected_item = tree.focus()
