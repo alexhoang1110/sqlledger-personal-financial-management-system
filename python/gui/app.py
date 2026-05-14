@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 from tkinter import messagebox
 from gui.theme import C, FONT_BODY, FONT_SMALL, sep
@@ -22,6 +23,7 @@ class FinanceApp(tk.Tk):
         self.current_page = None
         self._pages = {}
         self._nav_btns = {}
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
     # bootstrap
     def start(self):
@@ -161,3 +163,7 @@ class FinanceApp(tk.Tk):
             # Restart
             app = FinanceApp()
             app.start()
+
+    def on_closing(self):
+        self.destroy()
+        sys.exit(0)
