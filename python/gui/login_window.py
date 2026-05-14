@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from gui.theme import C, FONT_BODY, FONT_SMALL, entry_field, btn, sep
-from models.user import create_initial_account, login_user, create_user
+from gui.theme import C, FONT_SMALL, entry_field, btn, sep
+from models.user import create_initial_account, get_user_by_id, login_user, create_user
 
 #  LOGIN WINDOW
 class LoginWindow(tk.Toplevel):
@@ -174,7 +174,8 @@ class LoginWindow(tk.Toplevel):
             
             create_initial_account(uid, bank_name, balance)
 
-            messagebox.showinfo(f"Registration successful", "Your account has been created. Welcome {UserName}!")
+            user = get_user_by_id(uid)
+            messagebox.showinfo(f"Registration successful", f"Your account has been created. Welcome {user['FullName']}!")
             
             self.destroy()
             self.on_login(uid)
