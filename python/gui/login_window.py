@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 from tkinter import messagebox
 from gui.theme import C, FONT_SMALL, entry_field, btn, sep
@@ -14,6 +15,7 @@ class LoginWindow(tk.Toplevel):
         self.configure(bg=C["bg_app"])
         self.grab_set()
         self._show_login()
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
     # LOGIN FORM
     def _clear(self):
@@ -175,9 +177,13 @@ class LoginWindow(tk.Toplevel):
             create_initial_account(uid, bank_name, balance)
 
             user = get_user_by_id(uid)
-            messagebox.showinfo(f"Registration successful", f"Your account has been created. Welcome {user['FullName']}!")
+            messagebox.showinfo(f"Registration successful", f"Your account has been created. Welcome {user['UserName']}!")
             
             self.destroy()
             self.on_login(uid)
         except Exception as ex:
             messagebox.showerror("Error", f"An error occurred during registration: {ex}")
+
+    def on_closing(self):
+        self.master.destroy()
+        sys.exit(0)
