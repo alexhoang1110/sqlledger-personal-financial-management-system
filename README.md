@@ -13,7 +13,7 @@
 **National Economics University - Database Management System Project**  
 Student: Hoang Linh Phuong (11245925) | Instructor: Dr. Tran Hung
 
-[Representing Video](#) · [Report](docs/) · [Issues](https://github.com/alexhoang1110/sqlledger-personal-financial-management-system/issues)
+[Representing Video](https://youtu.be/HO4tPitm03I) · [Report](docs/11245925 - HoangLinhPhuong - FinalReport.pdf) · [Issues](https://github.com/alexhoang1110/sqlledger-personal-financial-management-system/issues)
 
 </div>
 
@@ -65,7 +65,8 @@ Key highlights:
 sqlledger-personal-financial-management-system/
 ├── docs/                       # Documentation and diagrams
 │   ├── ER_Diagram.png          # Entity-Relationship diagram
-│   └── [file_name]             # Final project report
+│   └── 11245925 - HoangLinhPh
+│       uong - FinalReport.pdf  # Final project report
 ├── sql/                        # All database scripts
 │   ├── 01_schema.sql           # Tables, PKs, FKs, constraints
 │   ├── 02_indexes.sql          # Performance indexes
