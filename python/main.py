@@ -1,6 +1,5 @@
 from gui.app import FinanceApp
 from utils.csv_handler import import_all_csv
-import os
 
 if __name__ == "__main__":
     from database import fetch_all
