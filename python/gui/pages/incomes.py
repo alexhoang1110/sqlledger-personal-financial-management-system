@@ -66,23 +66,29 @@ class IncomesPage(BasePage):
         tk.Label(right, text = "Income History", bg = C["bg_card"],
                  fg = C["text_pri"], font = FONT_HEAD).pack(anchor = "w", pady = (0, 10))
  
-        cols   = ("Date", "Amount ($)", "Description")
-        widths = [100, 130, 220]
+        cols   = ("ID", "Date", "Amount ($)", "Description")
+        widths = [0, 100, 130, 220] # ID có width=0
         tf, tree = build_treeview(right, cols, widths, height = 14)
+        
+        # Ẩn cột ID đi để không làm xấu giao diện
+        tree.column("ID", width=0, stretch=tk.NO)
+        tree.heading("ID", text="")
+        
         tf.pack(fill = "both", expand = True)
  
         for r in get_income_by_user(self.get_uid()):
-            tree.insert("", tk.END, values = (str(r["IncomeDate"]), f"{float(r['Amount']):,.2f}", r["Description"]))
+            # THÊM r["IncomeID"] vào vị trí đầu tiên của values
+            tree.insert("", tk.END, values = (r["IncomeID"], str(r["IncomeDate"]), f"{float(r['Amount']):,.2f}", r["Description"]))
             
         def delete_selected():
             selected_item = tree.focus()
             if not selected_item:
-                messagebox.showwarning("Please select an income entry to delete.")
+                messagebox.showwarning("No selection", "Please select an income entry to delete.")
                 return
             
             item_values = tree.item(selected_item, "values")
-            income_id = item_values[0]
-            amount_str = item_values[2]
+            income_id = item_values[0]   # Bây giờ [0] đã trỏ đúng vào IncomeID
+            amount_str = item_values[2]  # Và [2] đã trỏ đúng vào số tiền Amount
 
             confirm = messagebox.askyesno("Confirm Deletion", f"Are you sure you want to delete this income entry of ${amount_str}?")
             if confirm:
