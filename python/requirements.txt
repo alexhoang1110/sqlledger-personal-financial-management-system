@@ -3,10 +3,7 @@
  
 # Database connection
 mysql-connector-python==9.3.0
- 
-# Data processing
-pandas==3.0.2
- 
+
 # Data visualization (charts & graphs)
 matplotlib==3.10.8
 
