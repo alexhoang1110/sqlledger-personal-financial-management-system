@@ -85,7 +85,8 @@ class LoginWindow(tk.Toplevel):
     # REGISTER FORM
     def _show_register(self):
         self._clear()
-        self.geometry("900x900")
+        self.geometry("1920x1080")
+        self.resizable(True, True)
 
         hdr = tk.Frame(self, bg = C["bg_app"], pady = 28)
         hdr.pack(fill = "x")
