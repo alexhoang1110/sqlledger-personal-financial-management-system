@@ -65,7 +65,8 @@ Key highlights:
 sqlledger-personal-financial-management-system/
 ├── docs/                       # Documentation and diagrams
 │   ├── ER_Diagram.png          # Entity-Relationship diagram
-│   └── [file_name]             # Final project report
+│   └── 11245925 - HoangLinh
+│       Phuong - FinalReport    # Final project report
 ├── sql/                        # All database scripts
 │   ├── 01_schema.sql           # Tables, PKs, FKs, constraints
 │   ├── 02_indexes.sql          # Performance indexes
